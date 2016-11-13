@@ -48,9 +48,46 @@ Example: Reference Architecture
    
    [1] https://en.wikipedia.org/wiki/Microcontroller
 
+
+Some Examples
+=============
+
+.. figure:: images/arduino-publicdomain.png
+   :width: 90%
+   :align: center
+
+   AVR/ARM: Arduinos
+
+.. figure:: images/mojo_fpga.jpg
+   :width: 50%
+   :align: center
+
+   Spartan 6 XC6SLX9 FPGA
+
+.. raw:: pdf
+
+   FrameBreak
+
+.. figure:: images/ESP8266_coincell.jpg
+   :width: 50%
+   :align: right
+
+   Xtensa LX-106: ESP8266
+
+.. raw:: pdf
+
+    Spacer 0 1cm
+
+.. figure:: images/propeller_quickstart.png
+   :width: 70%
+   :align: right
+
+   P8X32A microcontroller
+
 .. raw:: pdf
 
    PageBreak cutePage
+
 
 Microcontroller Architecture / CPU Families
 ===========================================
