@@ -15,11 +15,23 @@
 Exactly What Kind of Hardware Are We Talking About?
 ===================================================
 
-* Stand-alone or separate real-time CPU core(s)
-* Can also come in combination or hybrid configurations
-* Requires firmware loaded at runtime to do something
-* Includes both hard and soft processor cores
-* Interfaces for debug and/or communication with Linux runtime
+* Primary Characteristics
+
+  - Stand-alone or separate real-time CPU core(s)
+  - Can also come in combination or hybrid configurations
+  - Requires firmware loaded at runtime to do something
+  - Includes both hard and soft processor cores
+  - Interfaces for debug and/or communication with Linux runtime
+
+* Typical Applications
+
+  - IoT, industrial, automotive, consumer, hobbyist
+
+    + Machine control (3D printing, milling, process control)
+    + Car navigation, entertainment, communication
+    + Door/entry control, locks, power, LEDs, appliances
+    + Autopilots (drones, rovers, UAVs) and robotics
+    + Wearables, instrumentation, mesh networks
 
 .. raw:: pdf
 
@@ -103,13 +115,14 @@ Microcontroller Architecture / CPU Families
 + Still around: PowerPC, MIPS, STM, TI, Toshiba, Freescale/NXP, etc
 + Combination and Hybrid Architectures/Implementations
 
-  * PRUSS - Programmable Real-time Unit Subsystem
+  * `PRU-ICSS`_ - Programmable Real-Time Unit and Industrial Communication Subsystem
   * DSP - Digital Signal Processor
   * FPGA - Field Programmable Gate Array
   * Massively Parallel - Parallax Cog/Hub, Parallela, Transputer
 
 .. _Harvard architecture: https://en.wikipedia.org/wiki/Harvard_architecture
 .. _von Neumann architecture: https://en.wikipedia.org/wiki/Von_Neumann_architecture
+.. _PRU-ICSS: http://elinux.org/Ti_AM33XX_PRUSSv2
 
 Hybrid and "Combo" Boards
 =========================
@@ -123,7 +136,29 @@ Toolchains, SDKs, and Architectures
 Vendor vs. Open Source Tools
 ============================
 
+Example: ESP8266, Adafruit Feather HUZZAH
+=========================================
 
+ESP8266 Cont.
+=============
+
+Example: PRU-ICSS, TI BeagleBoneBlack
+=====================================
+
+PRU-ICSS Cont.
+==============
+
+Example: nRF52832, Nordic wireless SoC
+======================================
+
+nRF52832 Cont.
+==============
+
+How To Choose?
+==============
+
+Where to Go Next
+================
 
 License and Thanks!
 ===================
