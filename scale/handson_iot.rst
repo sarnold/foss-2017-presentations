@@ -115,14 +115,14 @@ Microcontroller Architecture / CPU Families
 + Still around: PowerPC, MIPS, STM, TI, Toshiba, Freescale/NXP, etc
 + Combination and Hybrid Architectures/Implementations
 
-  * `PRU-ICSS`_ - Programmable Real-Time Unit and Industrial Communication Subsystem
+  * `PRU-ICSS / PRUSSv2`_ - Programmable Real-Time Unit and Industrial Communication Subsystem
   * DSP - Digital Signal Processor
   * FPGA - Field Programmable Gate Array
   * Massively Parallel - Parallax Cog/Hub, Parallela, Transputer
 
 .. _Harvard architecture: https://en.wikipedia.org/wiki/Harvard_architecture
 .. _von Neumann architecture: https://en.wikipedia.org/wiki/Von_Neumann_architecture
-.. _PRU-ICSS: http://elinux.org/Ti_AM33XX_PRUSSv2
+.. _PRU-ICSS / PRUSSv2: http://elinux.org/Ti_AM33XX_PRUSSv2
 
 Hybrid and "Combo" Boards
 =========================
@@ -148,11 +148,11 @@ Example: PRU-ICSS, TI BeagleBoneBlack
 PRU-ICSS Cont.
 ==============
 
-Example: nRF52832, Nordic wireless SoC
-======================================
+Example: Atmel SAM3X8E, Udoo / Udoo Neo
+=======================================
 
-nRF52832 Cont.
-==============
+SAM3X8E Cont.
+=============
 
 How To Choose?
 ==============
