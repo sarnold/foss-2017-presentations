@@ -133,6 +133,31 @@ What About Software Tools?
 Toolchains, SDKs, and Architectures
 ===================================
 
+Bare-Metal and Firmware
+-----------------------
+
+Each micro-controller/real-time core has an architecture and instruction set,
+which any toolchain must support (or at least a viable subset).  Most have
+both vendor support and a gcc port, although in some cases the gcc port might
+be new and essentially still under development (eg, the TI PRUSS toolchain).
+
+The toolchain itself is mainly the compiler/linker/loader and a standard C
+library (of which there are several).  In order to build anything "fancy" you
+also need a Software Development Kit (or SDK).  Sometimes you can live with
+either the compiler runtime and/or libc, but a good set of libraries with
+documented interfaces is always a Good Thing.  Depending on the target arch
+there is almost always a vendor SDK and probably open source alternatives.
+
+You should always do your homework (for a real project) or just pick one and
+try it and see...
+
+* `AVR-Ada Blog`_ by Tero Koskinen
+
+  * `tkoskine bitbucket repos`_ - Tools for AVR and ARM in multiple languages
+
+.. _AVR-Ada Blog: http://arduino.ada-language.com/
+.. _tkoskine bitbucket repos: https://bitbucket.org/tkoskine/
+
 Vendor vs. Open Source Tools
 ============================
 
