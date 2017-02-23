@@ -127,6 +127,20 @@ Microcontroller Architecture / CPU Families
 Hybrid and "Combo" Boards
 =========================
 
+Most embedded Linux boards have co-processors for graphics or network acceleration
+but here we're talking about something a little different.  While the bulk of
+microcontrollers are stand-alone, there are several options available with both
+an ARM host and separate microcontroller cores.
+
+* General purpose microcontrollers (not DSPs)
+* Can be Cortex (ARM), AVR, FPGA, other
+
+Examples:
+
+* TI Beagleboard / Beaglebone boards (AM335X ARM host plus PRUSS cores)
+* Altera "hybrid" Arm/FPGA boards (socfpga ARM host plus CycloneV FPGA)
+* Udoo / Udoo Neo boards (i.MX6 ARM host plus ARM Cortex-compatible core)
+
 What About Software Tools?
 ==========================
 
@@ -145,11 +159,8 @@ The toolchain itself is mainly the compiler/linker/loader and a standard C
 library (of which there are several).  In order to build anything "fancy" you
 also need a Software Development Kit (or SDK).  Sometimes you can live with
 either the compiler runtime and/or libc, but a good set of libraries with
-documented interfaces is always a Good Thing.  Depending on the target arch
-there is almost always a vendor SDK and probably open source alternatives.
-
-You should always do your homework (for a real project) or just pick one and
-try it and see...
+documented interfaces is always a Good Thing.  Depending on the target board
+there is typically a vendor SDK several open source alternatives.
 
 * `AVR-Ada Blog`_ by Tero Koskinen
 
@@ -157,6 +168,9 @@ try it and see...
 
 .. _AVR-Ada Blog: http://arduino.ada-language.com/
 .. _tkoskine bitbucket repos: https://bitbucket.org/tkoskine/
+
+You should always do your homework (for a real project) or just pick one and
+try it and see...
 
 Vendor vs. Open Source Tools
 ============================
