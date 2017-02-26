@@ -12,6 +12,74 @@
 
    SetPageCounter
 
+.. raw:: pdf
+
+   PageBreak twoColumn
+
+Who Am I?
+=========
+
+.. raw:: pdf
+
+   Spacer 0 1cm
+
+**Gentoo Linux Developer**
+
+**OpenEmbedded contributor**
+
+.. raw:: pdf
+
+   Spacer 0 1cm
+
+**BeagleBoard GSoC Mentor**
+
+**Grumpy toolchain guy (part-time)**
+
+**Geeky software tool maintainer**
+
+http://bbb.io/gsoc
+https://github.com/sarnold
+https://github.com/VCTLabs
+
+.. raw:: pdf
+
+   Spacer 0 1cm
+
+**Systems Architecture guy**
+
+**Principal Scientist VCT Labs**
+
+.. raw:: pdf
+
+   FrameBreak
+
+.. raw:: pdf
+
+   Spacer 0 5mm
+
+.. image:: images/gentoo-steve-new-subgraph2-scaled.png
+   :align: center
+   :width: 45%
+
+.. raw:: pdf
+
+   Spacer 0 1cm
+
+.. image:: images/beaglesat.png
+   :align: center
+   :width: 45%
+
+.. raw:: pdf
+
+   Spacer 0 2cm
+
+.. image:: images/vct-logo.png
+   :align: center
+
+.. raw:: pdf
+
+   PageBreak cutePage
+
 Exactly What Kind of Hardware Are We Talking About?
 ===================================================
 
@@ -65,16 +133,16 @@ Example Boards
 ==============
 
 .. figure:: images/arduino-publicdomain.png
-   :width: 90%
+   :width: 70%
    :align: center
 
    AVR/ARM: Arduinos
 
-.. figure:: images/mojo_fpga.jpg
-   :width: 60%
+.. figure:: images/nrf52_dk.png
+   :width: 90%
    :align: center
 
-   Spartan 6 XC6SLX9 FPGA
+   Cortex-M4: nRF52 DK
 
 .. raw:: pdf
 
@@ -137,12 +205,50 @@ an ARM host and separate microcontroller cores.
 
 Examples:
 
-* TI Beagleboard / Beaglebone boards (AM335X ARM host plus PRUSS cores)
-* Altera "hybrid" Arm/FPGA boards (socfpga ARM host plus CycloneV FPGA)
-* Udoo / Udoo Neo boards (i.MX6 ARM host plus ARM Cortex-compatible core)
+* TI Beagleboard / Beaglebone boards (AM335X ARMv7 w/ PRU cores)
+* Altera "hybrid" Arm/FPGA boards (socfpga ARMv7 w/ 1 CycloneV FPGA)
+* Udoo / Udoo Neo boards (i.MX6 ARMv7 w/ 1 ARM Cortex-M core)
+
+.. figure:: images/combo-combo.png
+   :width: 90%
+   :align: center
+
 
 What About Software Tools?
 ==========================
+
+.. epigraph::
+
+   *Just like every (beagle) dog has his/her day, every arch has its toolchain...*
+   
+   -- *nerdboy in #gentoo-embedded*
+
+.. raw:: pdf
+
+    Spacer 0 5mm
+
+The typical embedded Linux cross-toolchain is built to target processor
+architectures different from the build host and has 4 main parts:
+
+* a cross compiler for C and C++ (in the case of gcc, possibly more languages)
+* a cross binutils (the build tools needed by the compiler)
+* a set of libraries and headers for the supported languages
+* a set of kernel headers for the target platform
+
+The `(cross) compiler prefix`_ (triplet) contains several bits of important info:
+
+* machine-vendor-OS (where OS can be two fields and vendor can be left out)
+
+::
+
+ # gcc-config -l
+ [1] armv7a-hardfloat-linux-gnueabi-5.4.0 *
+ [2] armv7m-hardfloat-eabi-5.4.0 *
+ [4] mips64-unknown-linux-gnueabi-5.3.0 *
+ [8] x86_64-pc-linux-gnu-5.4.0 *
+
+
+.. _(cross) compiler prefix: http://wiki.osdev.org/Target_Triplet
 
 Toolchains, SDKs, and Architectures
 ===================================
@@ -160,7 +266,7 @@ library (of which there are several).  In order to build anything "fancy" you
 also need a Software Development Kit (or SDK).  Sometimes you can live with
 either the compiler runtime and/or libc, but a good set of libraries with
 documented interfaces is always a Good Thing.  Depending on the target board
-there is typically a vendor SDK several open source alternatives.
+there is typically a vendor SDK and (hopefully) several open source alternatives.
 
 * `AVR-Ada Blog`_ by Tero Koskinen
 
@@ -169,17 +275,24 @@ there is typically a vendor SDK several open source alternatives.
 .. _AVR-Ada Blog: http://arduino.ada-language.com/
 .. _tkoskine bitbucket repos: https://bitbucket.org/tkoskine/
 
+* `Embedded Project Blog`_ - by Stefan Wendler
+
+  * `wendlers github installer`_ - Best installer for propeller tools
+
+.. _Embedded Project Blog: http://www.kaltpost.de/?page_id=63
+.. _wendlers github installer: https://github.com/wendlers/install-propeller-toolchain
+
 You should always do your homework (for a real project) or just pick one and
 try it and see...
 
 Vendor vs. Open Source Tools
 ============================
 
-Example: ESP8266, Adafruit Feather HUZZAH
-=========================================
+Example: nRF52 DK (nRF52 2.4 GHz tx/rx and ARM Cortex-M4)
+=========================================================
 
-ESP8266 Cont.
-=============
+nRF52 DK Cont.
+==============
 
 Example: PRU-ICSS, TI BeagleBoneBlack
 =====================================
@@ -187,17 +300,31 @@ Example: PRU-ICSS, TI BeagleBoneBlack
 PRU-ICSS Cont.
 ==============
 
-Example: Atmel SAM3X8E, Udoo / Udoo Neo
-=======================================
-
-SAM3X8E Cont.
-=============
-
 How To Choose?
 ==============
 
 Where to Go Next
 ================
+
+nRF52 DK and toolchain, flash wrapper
+
+ * https://www.nordicsemi.com/eng/Products/Bluetooth-low-enery/nRF52-DK
+ * https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
+ * https://github.com/VCTLabs/nrfjprog-wrapper
+
+BeagleBone/BeagleBoard info, PRU toolchain, Yocto BSP manifest
+
+ * https://eewiki.net/display/linuxonarm/BeagleBone+Black
+ * http://elinux.org/Ti_AM33XX_PRUSSv2
+ * https://github.com/VCTLabs/vct-beagleboard-bsp-platform
+
+DE-0 Nano SoC info, updated demo projects, BSP manifest, vendor refs
+
+ * https://eewiki.net/display/linuxonarm/DE0-Nano-SoC+Kit
+ * https://github.com/VCTLabs/DE1_SOC_Linux_FB
+ * https://github.com/VCTLabs/DE1-SoC-Sound
+ * https://github.com/VCTLabs/vct-socfpga-bsp-platform
+ * https://github.com/altera-opensource/linux-refdesigns
 
 License and Thanks!
 ===================
@@ -205,7 +332,7 @@ License and Thanks!
 :Author: Stephen L Arnold
 :FOSS Hat: Gentoo Linux Developer
 :Contact: nerdboy@gentoo.org
-:Revision: 0.1
+:Revision: 0.0.1
 :Date: |date|, |time| PST8PDT
 :License: `CC-Attribution-ShareAlike`_
 :Copyright: 2016 `Stephen Arnold`_
