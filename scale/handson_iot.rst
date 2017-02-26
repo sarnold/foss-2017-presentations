@@ -87,19 +87,22 @@ Exactly What Kind of Hardware Are We Talking About?
 
   - Stand-alone or separate real-time CPU core(s)
   - Can also come in combination or hybrid configurations
-  - Requires firmware loaded at runtime to do something
+  - Requires firmware flashing to do something
   - Includes both hard and soft processor cores
-  - Interfaces for debug and/or communication with Linux runtime
+  - Interfaces for debug, RAM/peripherals, Linux runtime
 
 * Typical Applications
 
   - IoT, industrial, automotive, consumer, hobbyist
 
+    + Fixed and mobile sensor platforms
+
+      * Wearables, remote instrumentation, mesh networks
+      * Autopilots (drones, rovers, UAVs) and robotics
+      * Vehicle navigation, entertainment, communication
+
     + Machine control (3D printing, milling, process control)
-    + Car navigation, entertainment, communication
     + Door/entry control, locks, power, LEDs, appliances
-    + Autopilots (drones, rovers, UAVs) and robotics
-    + Wearables, instrumentation, mesh networks
 
 .. raw:: pdf
 
@@ -181,16 +184,21 @@ Microcontroller Architecture / CPU Families
   * 8051 and PIC need multiple clock cycles per instruction, while AVR and ARM can execute most instructions in a single clock cycle
   * AVR and ARM have great open source compilers, libs, examples
 + Still around: PowerPC, MIPS, STM, TI, Toshiba, Freescale/NXP, etc
-+ Combination and Hybrid Architectures/Implementations
++ Combination/Hybrid and Special Purpose Architectures/Implementations
 
   * `PRU-ICSS / PRUSSv2`_ - Programmable Real-Time Unit and Industrial Communication Subsystem
-  * DSP - Digital Signal Processor
-  * FPGA - Field Programmable Gate Array
-  * Massively Parallel - Parallax Cog/Hub, Parallela, Transputer
+  * DSP - `Digital Signal Processor`_
+  * FPGA - `Field Programmable Gate Array`_
+  * Massively Parallel - `Parallax Propeller`_, `Parallela`_, `Transputer`_
 
 .. _Harvard architecture: https://en.wikipedia.org/wiki/Harvard_architecture
 .. _von Neumann architecture: https://en.wikipedia.org/wiki/Von_Neumann_architecture
 .. _PRU-ICSS / PRUSSv2: http://elinux.org/Ti_AM33XX_PRUSSv2
+.. _Digital Signal Processor: https://en.wikipedia.org/wiki/Digital_signal_processor
+.. _Field Programmable Gate Array: https://en.wikipedia.org/wiki/Field-programmable_gate_array
+.. _Parallax Propeller: https://en.wikipedia.org/wiki/Parallax_Propeller
+.. _Parallela: https://www.parallella.org/board/
+.. _Transputer: https://en.wikipedia.org/wiki/Transputer
 
 Hybrid and "Combo" Boards
 =========================
