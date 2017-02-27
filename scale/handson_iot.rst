@@ -296,20 +296,81 @@ try it and see...
 Vendor vs. Open Source Tools
 ============================
 
-Example: nRF52 DK (nRF52 2.4 GHz tx/rx and ARM Cortex-M4)
-=========================================================
+Vendor boards typically have a vendor SDK and vendor toolchain options (sometimes
+including GCC) whereas open source hardware generally relies on a GCC toolchain
+(with some interesting exceptions).  The more "mainstream" the architecture, the
+more likely it is to have a mature GCC option.
 
-nRF52 DK Cont.
-==============
+"Common" architectures
 
-Example: PRU-ICSS, TI BeagleBoneBlack
-=====================================
+* ARM: Cortex-M/R "official" toolchain is `GNU ARM`_
+* AVR: Atmel Studio is based on `GNU AVR`_
+
+"Oddball" architectures
+
+* `PRU-ICSS`_: "official" toolchain w/ full debug support is `CGT`_ and `CCS`_
+* Parallax Propeller (original) toolchain is based on `SPIN`_
+
+The rub: FPGAs
+
+* FPGAs tend to be more `vendor-specific`_ (both hardware and toolchains)
+* `Open source firmware toolchains`_ do exist (some components may be missing and/or immature)
+* Each board typically has its own interface to host side and may require `custom Linux integration`_, etc
+* Peripherals implemented on the FPGA side may also need custom DT and driver support for Linux, etc
+
+.. _GNU ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
+.. _GNU AVR: http://gnutoolchains.com/avr/
+.. _PRU-ICSS: http://processors.wiki.ti.com/index.php/PRU-ICSS
+.. _CGT: http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU
+.. _CCS: http://www.ti.com/tool/ccstudio-sitara
+.. _SPIN: http://www.learn.parallax.com/projects/propeller-spin-language
+.. _vendor-specific: https://coertvonk.com/technology/logic/quartus-cycloneiv-de0nano-15932
+.. _Open source firmware toolchains: http://www.clifford.at/icestorm/
+.. _custom Linux integration: https://github.com/VCTLabs/u-boot/blob/v2016.03-yocto/doc/README.socfpga
+
+
+Example: nRF52 DK (nRF52 2.4 GHz tx/rx plus Cortex-M4)
+======================================================
+
+Debug from x86 and RPi3
+
+Example: DE-0 Nano SoC (FPGA plus ARM Cortex-A9)
+================================================
+
+Linux - FPGA Integration
+
+Example: PRU-ICSS, TI AM335x, AM437x, AM571x
+============================================
+
+Kernels and kernels and PRUSS interfaces
 
 PRU-ICSS Cont.
 ==============
 
 How To Choose?
 ==============
+
+It depends.   What do you want to do?  Educate yourself?  Make a cool project?
+Prototype a product idea?  Automate something?
+
+.. raw:: pdf
+
+    Spacer 0 5mm
+
+* Education - maker space, LUG group, home
+
+  - Very little open source/popular hardware is truly mainlined
+  - Pick a board off the LinuxOnArm wiki
+  - Pick a board used at the hacker space or recommended by a friend
+  - Pick a board with a large community and lots of projects
+
+* Commercial product - kickstarter, customer, boss
+
+  - Understand the project requirements
+  - Evaluate some eval boards
+  - Understand the hardware limitations
+  - Evaluate the kernel and runtime needs
+  - Evauluate performance/other reqs vs. BoM costs
 
 Where to Go Next
 ================
@@ -343,7 +404,8 @@ License and Thanks!
 :Revision: 0.0.1
 :Date: |date|, |time| PST8PDT
 :License: `CC-Attribution-ShareAlike`_
-:Copyright: 2016 `Stephen Arnold`_
+:Copyright: 2017 `Stephen Arnold`_
+:Other: All other trademarks and copyrights belong to their respective owners.
 
 .. _CC-Attribution-ShareAlike: http://creativecommons.org/licenses/by-sa/3.0/
 .. _Stephen Arnold: http://github.com/sarnold
