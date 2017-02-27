@@ -227,9 +227,9 @@ What About Software Tools?
 
 .. epigraph::
 
-   *Just like every (beagle) dog has his/her day, every arch has its toolchain...*
+   `Just like every (beagle) dog has his/her day, every arch has its toolchain...`
    
-   -- *nerdboy in #gentoo-embedded*
+   -- `nerdboy in #gentoo-embedded`
 
 .. raw:: pdf
 
@@ -308,7 +308,7 @@ more likely it is to have a mature GCC option.
 
 "Oddball" architectures
 
-* `PRU-ICSS`_: "official" toolchain w/ full debug support is `CGT`_ and `CCS`_
+* `TI PRU-ICSS`_: "official" toolchain w/ full debug support is `CGT`_ and `CCS`_
 * Parallax Propeller (original) toolchain is based on `SPIN`_
 
 The rub: FPGAs
@@ -320,7 +320,7 @@ The rub: FPGAs
 
 .. _GNU ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
 .. _GNU AVR: http://gnutoolchains.com/avr/
-.. _PRU-ICSS: http://processors.wiki.ti.com/index.php/PRU-ICSS
+.. _TI PRU-ICSS: http://processors.wiki.ti.com/index.php/PRU-ICSS
 .. _CGT: http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU
 .. _CCS: http://www.ti.com/tool/ccstudio-sitara
 .. _SPIN: http://www.learn.parallax.com/projects/propeller-spin-language
@@ -342,10 +342,61 @@ Linux - FPGA Integration
 Example: PRU-ICSS, TI AM335x, AM437x, AM571x
 ============================================
 
-Kernels and kernels and PRUSS interfaces
+.. epigraph::
+
+   `Hmm, Kernels and kernels and PRUSS interfaces...`
+   
+   -- `nerdboy in #beagle-gsoc`
+
+.. raw:: pdf
+
+    Spacer 0 5mm
+
+Given how long beagleboards and beaglebones have been around, there have been
+several long-lived TI and BeagleBoard.Org kernel branches, and you may still
+run across projects, demos, or examples that still require a 3.8 or 3.14 kernel.
+The PRU interfaces have evolved over that time, so using the latest
+available versions of PRU sample projects and the TI-staging kernels should
+"match".
+
+* Old kernels/PRU firmware use the old `UIO PRUSS`_ interface
+* Newer kernels/pru-software-support-package use the `Remoteproc`_ interface
+* Old TI kernel branches include 3.8 and 3.14, newer branches are 4.4 and 4.9
+
+  - New beaglebone patches should appear in the `bb-kernel`_ mainline build
+
+* To get started, read `Using the C language to program the am335x PRU`_
+* Clone the `pru-software-support-package`_ repo, install the CCS compiler package,
+  and either use a `bb-kernel`_ build with debian rootfs or build everything with
+  the `vct-beagleboard-bsp-platform`_
+* Follow along (as much as possible) with the TI Training in `Hands-on Labs`_
+
+.. _UIO PRUSS: https://github.com/beagleboard/am335x_pru_package/tree/master/pru_sw/old_example
+.. _Remoteproc: http://processors.wiki.ti.com/index.php/PRU-ICSS_Remoteproc_Driver
+.. _bb-kernel: https://eewiki.net/display/linuxonarm/BeagleBone+Black#BeagleBoneBlack-Mainline
+.. _pru-software-support-package: https://git.ti.com/pru-software-support-package
+.. _vct-beagleboard-bsp-platform: https://github.com/VCTLabs/vct-beagleboard-bsp-platform
+.. _Hands-on Labs: http://processors.wiki.ti.com/index.php/PRU_Training:_Hands-on_Labs
+.. _Using the C language to program the am335x PRU: https://www.embeddedrelated.com/showarticle/603.php
+
 
 PRU-ICSS Cont.
 ==============
+
+GCC vs. TI PRU C compiler issues and resources
+
+* PRU ELF file format - merged, both PRU-GCC and TI toolchain use 0x90 for machine code
+* TI ELF PRU RelocationsRelocations - `Work is ongoing to make Binutils and TI ELF relocations compatible`
+* `GCC PRU ABI`_ and `TI PRU C ABI`_ are slightly different
+
+See also:
+
+* `TI PRU-ICSS`_ wiki "portal" page / resources
+* `PRU-ICSS Getting Started Guide`_ 
+
+.. _GCC PRU ABI: https://github.com/dinuxbg/gnupru/wiki#gcc-pru-abi
+.. _TI PRU C ABI: http://www.ti.com/lit/ug/spruhv7a/spruhv7a.pdf
+.. _PRU-ICSS Getting Started Guide: http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
 
 How To Choose?
 ==============
