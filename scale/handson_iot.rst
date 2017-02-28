@@ -277,6 +277,8 @@ either the compiler runtime and/or libc, but a good set of libraries with
 documented interfaces is always a Good Thing.  Depending on the target board
 there is typically a vendor SDK and (hopefully) several open source alternatives.
 
+Places to start:
+
 * `AVR-Ada Blog`_ by Tero Koskinen
 
   * `tkoskine bitbucket repos`_ - Tools for AVR and ARM in multiple languages
@@ -348,7 +350,7 @@ while Altera SoCs have a "USB Blaster" host port.
 * Flashing your firmware is board/vendor-specific
 
   * nRF52 supports mass-storage/`JLink`_/UART
-  * ESP8266 supports USB/serial (esptool.py)
+  * ESP8266 supports USB/serial (`esptool.py`_)
   * DE-0/DE-1 supports u-boot, USB Blaster, and `JTAG`_ (power-on only)
   * BeagleBone loads PRU code on boot (from /lib/firmware)
 
@@ -359,6 +361,7 @@ while Altera SoCs have a "USB Blaster" host port.
 
 .. _ON/OFF: https://en.wikipedia.org/wiki/Switch
 .. _JLink: https://www.segger.com/jlink-debug-probes.html
+.. _esptool.py: https://github.com/espressif/esptool
 .. _JTAG: https://en.wikipedia.org/wiki/JTAG
 
 
@@ -383,7 +386,7 @@ README_ content that was lost in patch limbo).
 .. _README: https://github.com/VCTLabs/u-boot/blob/v2016.03-yocto/doc/README.socfpga
 
 Finally, there's the problem of too much documentation (really!).  As several
-university course use socfpga boards to teach processor design, such as 
+university courses use socfpga boards to teach processor design, such as 
 `ECE 5760`_ at Cornell, they make a good starting point.
 
 .. _ECE 5760: https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/index.html
