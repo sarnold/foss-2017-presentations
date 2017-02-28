@@ -5,6 +5,7 @@
 .. image:: images/pmezydlo_pru-spi-slave.png
    :align: center
    :width: 85%
+   :target: https://github.com/pmezydlo/SPI_slave_driver_implementation/wiki
 
 .. contents:: Presentation Outline
 
@@ -344,7 +345,7 @@ Each SoC/board should have "standard" interfaces, along with any vendor-specific
 things for flashing firmware. The nRF52 DK uses a mass-storage interface for this,
 while Altera SoCs have a "USB Blaster" host port.
 
-* Flashing your firmware is board/vedor-specific
+* Flashing your firmware is board/vendor-specific
 
   * nRF52 supports mass-storage/`JLink`_/UART
   * ESP8266 supports USB/serial (esptool.py)
@@ -438,13 +439,13 @@ available versions of PRU sample projects and the TI-staging kernels should
 .. _Using the C language to program the am335x PRU: https://www.embeddedrelated.com/showarticle/603.php
 
 
-PRU-ICSS Cont.
-==============
+Examples: PRU-ICSS Cont.
+=========================
 
 GCC vs. TI PRU C compiler issues and resources
 
 * PRU ELF file format - merged, both PRU-GCC and TI toolchain use 0x90 for machine code
-* TI ELF PRU RelocationsRelocations - `Work is ongoing to make Binutils and TI ELF relocations compatible`
+* TI ELF PRU Relocations - `Work is ongoing to make Binutils and TI ELF relocations compatible`
 * `GCC PRU ABI`_ and `TI PRU C ABI`_ are slightly different
 
 See also:
@@ -455,6 +456,21 @@ See also:
 .. _GCC PRU ABI: https://github.com/dinuxbg/gnupru/wiki#gcc-pru-abi
 .. _TI PRU C ABI: http://www.ti.com/lit/ug/spruhv7a/spruhv7a.pdf
 .. _PRU-ICSS Getting Started Guide: http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
+
+Interesting Applications:
+
+* BeagleBone - `beaglelogic`_, `PRUDAQ`_, `SPI slave driver`_ (title pic)
+* Altera socfpga (not the demos): `DE1-SoC-Sound`_, I2S audio using `opencores`_
+* ESP8266: `NodeMCU`_ and `microPython`_
+
+.. _beaglelogic: https://github.com/abhishek-kakkar/BeagleLogic/wiki
+.. _PRUDAQ: https://github.com/google/prudaq/wiki
+.. _SPI slave driver: https://github.com/pmezydlo/SPI_slave_driver_implementation/wiki
+.. _DE1-SoC-Sound: https://github.com/VCTLabs/DE1-SoC-Sound
+.. _opencores: http://opencores.org/
+.. _NodeMCU: https://en.wikipedia.org/wiki/NodeMCU
+.. _microPython: https://github.com/micropython/micropython/wiki
+
 
 How To Choose?
 ==============
@@ -479,7 +495,7 @@ Prototype a product idea?  Automate something?
   - Evaluate some eval boards
   - Understand the hardware limitations
   - Evaluate the kernel and runtime needs
-  - Evauluate performance/other reqs vs. BoM costs
+  - Evaluate performance/other reqs vs. BoM costs
 
 Where to Go Next
 ================
