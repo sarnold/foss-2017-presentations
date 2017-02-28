@@ -315,7 +315,7 @@ The rub: FPGAs
 
 * FPGAs tend to be more `vendor-specific`_ (both hardware and toolchains)
 * `Open source firmware toolchains`_ do exist (some components may be missing and/or immature)
-* Each board typically has its own interface to host side and may require `custom Linux integration`_, etc
+* Each board typically has its own interface to host side and may require `custom Linux integration`__, etc
 * Peripherals implemented on the FPGA side may also need custom DT and driver support for Linux, etc
 
 .. _GNU ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
@@ -326,21 +326,79 @@ The rub: FPGAs
 .. _SPIN: http://www.learn.parallax.com/projects/propeller-spin-language
 .. _vendor-specific: https://coertvonk.com/technology/logic/quartus-cycloneiv-de0nano-15932
 .. _Open source firmware toolchains: http://www.clifford.at/icestorm/
-.. _custom Linux integration: https://github.com/VCTLabs/u-boot/blob/v2016.03-yocto/doc/README.socfpga
+
+__ README_
 
 
-Example: nRF52 DK (nRF52 2.4 GHz tx/rx plus Cortex-M4)
-======================================================
+Examples: nRF52 DK, ESP8266, FPGA, PRU-ICSS
+===========================================
 
-Debug from x86 and RPi3
+Great, we have a toolchain/SDK and a devel-kit/eval board - now what?
 
-Example: DE-0 Nano SoC (FPGA plus ARM Cortex-A9)
-================================================
+* Compile some firmware/bootloader or try the vendor flash demo
+* Connect any necessary cables, etc (for nRF52 connect the NFC antenna)
+* Hook up a serial/debug interface (microUSB or serial pins or even host USB)
+* If needed, apply power (eg, flip the `ON/OFF`_ switch)
 
-Linux - FPGA Integration
+Each SoC/board should have "standard" interfaces, along with any vendor-specific
+things for flashing firmware. The nRF52 DK uses a mass-storage interface for this,
+while Altera SoCs have a "USB Blaster" host port.
 
-Example: PRU-ICSS, TI AM335x, AM437x, AM571x
-============================================
+* Flashing your firmware is board/vedor-specific
+
+  * nRF52 supports mass-storage/`JLink`_/UART
+  * ESP8266 supports USB/serial (esptool.py)
+  * DE-0/DE-1 supports u-boot, USB Blaster, and `JTAG`_ (power-on only)
+  * BeagleBone loads PRU code on boot (from /lib/firmware)
+
+* Debug from x86 (desktop, laptop) or ARM (RPi3, BB, Udoo)
+
+  - JLink connected to USB, debug console (possibly BLE)
+  - Provide 5v/3.3v power as needed
+
+.. _ON/OFF: https://en.wikipedia.org/wiki/Switch
+.. _JLink: https://www.segger.com/jlink-debug-probes.html
+.. _JTAG: https://en.wikipedia.org/wiki/JTAG
+
+
+Examples: Altera socfpga
+========================
+
+**DE-0 Nano and DE-1 SoC Kits** (CycloneV FPGA plus ARM Cortex-A9)
+
+Another "rub": the Altera socfpga boards are a different species, since the hardware
+peripherals are literally split, ie some are connected to the ARM HPS side, and
+others are connected to the FPGA side.  On the HPS (Linux) side all you get is
+ethernet and a serial console with an FPGA firmware blob.  What?!?
+
+**Linux - FPGA Integration**
+
+The big issue is the FPGA demos aren't buildable without rolling back to (very)
+old toolchains/u-boot/kernel (or a lot of fiddling and poking).  Why?
+There's an important piece of integration glue missing/broken from the vendor
+tools and the u-boot side is virtually undocumented (see here for the missing
+README_ content that was lost in patch limbo).
+
+.. _README: https://github.com/VCTLabs/u-boot/blob/v2016.03-yocto/doc/README.socfpga
+
+Finally, there's the problem of too much documentation (really!).  As several
+university course use socfpga boards to teach processor design, such as 
+`ECE 5760`_ at Cornell, they make a good starting point.
+
+.. _ECE 5760: https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/index.html
+
+Best advice to get started is the `LinuxOnArm`_ wiki and `DE1_SOC_Linux_FB Demo project`_.
+Use the `vct-socfpga-bsp-platform`_ and 4.4-altera kernel to build a rootfs with the right
+kernel and u-boot patches (follow the DE1 FB readme for details).
+
+
+.. _LinuxOnArm: https://eewiki.net/display/linuxonarm/DE0-Nano-SoC+Kit
+.. _DE1_SOC_Linux_FB Demo project: https://github.com/VCTLabs/DE1_SOC_Linux_FB
+.. _vct-socfpga-bsp-platform: https://github.com/VCTLabs/vct-socfpga-bsp-platform
+
+
+Examples: PRU-ICSS, TI AM335x, AM437x, AM571x
+=============================================
 
 .. epigraph::
 
@@ -350,7 +408,7 @@ Example: PRU-ICSS, TI AM335x, AM437x, AM571x
 
 .. raw:: pdf
 
-    Spacer 0 5mm
+    Spacer 0 3mm
 
 Given how long beagleboards and beaglebones have been around, there have been
 several long-lived TI and BeagleBoard.Org kernel branches, and you may still
